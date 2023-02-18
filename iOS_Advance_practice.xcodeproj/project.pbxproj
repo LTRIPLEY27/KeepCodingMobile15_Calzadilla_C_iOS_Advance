@@ -22,6 +22,8 @@
 		2546E1FA299FE1DA006BCA17 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1F9299FE1DA006BCA17 /* LoginViewModel.swift */; };
 		25C5AC7129A0EA470017A3F9 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7029A0EA470017A3F9 /* ApiClient.swift */; };
 		25C5AC7429A0EABF0017A3F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7329A0EABF0017A3F9 /* Constants.swift */; };
+		25C5AC7B29A0F9190017A3F9 /* HeroListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7A29A0F9190017A3F9 /* HeroListView.swift */; };
+		25C5AC7D29A0FA580017A3F9 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7C29A0FA580017A3F9 /* HeroCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		2546E1F9299FE1DA006BCA17 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		25C5AC7029A0EA470017A3F9 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		25C5AC7329A0EABF0017A3F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		25C5AC7A29A0F9190017A3F9 /* HeroListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListView.swift; sourceTree = "<group>"; };
+		25C5AC7C29A0FA580017A3F9 /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		2546E1BE299FA45F006BCA17 /* iOS_Advance_practice */ = {
 			isa = PBXGroup;
 			children = (
+				25C5AC7529A0F5800017A3F9 /* HeroeList */,
 				25C5AC7229A0EAA70017A3F9 /* Utils */,
 				25C5AC6F29A0EA1A0017A3F9 /* ApiClientModel */,
 				2546E1F2299FA475006BCA17 /* login */,
@@ -167,6 +172,47 @@
 				25C5AC7329A0EABF0017A3F9 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		25C5AC7529A0F5800017A3F9 /* HeroeList */ = {
+			isa = PBXGroup;
+			children = (
+				25C5AC7929A0F8EF0017A3F9 /* View */,
+				25C5AC7829A0F8D30017A3F9 /* Model */,
+				25C5AC7729A0F8CB0017A3F9 /* Controller */,
+				25C5AC7629A0F5B60017A3F9 /* MvvM */,
+			);
+			path = HeroeList;
+			sourceTree = "<group>";
+		};
+		25C5AC7629A0F5B60017A3F9 /* MvvM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MvvM;
+			sourceTree = "<group>";
+		};
+		25C5AC7729A0F8CB0017A3F9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		25C5AC7829A0F8D30017A3F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		25C5AC7929A0F8EF0017A3F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				25C5AC7A29A0F9190017A3F9 /* HeroListView.swift */,
+				25C5AC7C29A0FA580017A3F9 /* HeroCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,9 +350,11 @@
 				2546E1C4299FA45F006BCA17 /* ViewController.swift in Sources */,
 				2546E1CA299FA45F006BCA17 /* iOS_Advance_practice.xcdatamodeld in Sources */,
 				25C5AC7129A0EA470017A3F9 /* ApiClient.swift in Sources */,
+				25C5AC7B29A0F9190017A3F9 /* HeroListView.swift in Sources */,
 				2546E1C0299FA45F006BCA17 /* AppDelegate.swift in Sources */,
 				2546E1F6299FA677006BCA17 /* LoginView.swift in Sources */,
 				2546E1C2299FA45F006BCA17 /* SceneDelegate.swift in Sources */,
+				25C5AC7D29A0FA580017A3F9 /* HeroCell.swift in Sources */,
 				2546E1FA299FE1DA006BCA17 /* LoginViewModel.swift in Sources */,
 				25C5AC7429A0EABF0017A3F9 /* Constants.swift in Sources */,
 			);

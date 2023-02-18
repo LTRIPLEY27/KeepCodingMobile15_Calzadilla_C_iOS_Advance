@@ -39,7 +39,7 @@ class LoginView : UIView {
         label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: 24)
         label.textAlignment = .center
-        label.textColor = .darkGray
+        label.textColor = .cyan
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -74,21 +74,31 @@ class LoginView : UIView {
         button.backgroundColor = .red
         button.setTitle("Log In", for: .normal)
         button.tintColor = .white
-        button.alpha = 0.80
+        //button.alpha = 0.80
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
+    let background = {
+        let image = UIImageView()
+        image.image = UIImage(named: "dragonBall.jpg")
+        image.contentMode = .scaleToFill
+        image.alpha = 0.73
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        return image
+    }()
     
     // función inicializadora de la view
     func startView(){
-        backgroundColor = .cyan
         
+        addSubview(background)
         addSubview(title)
         addSubview(email)
         addSubview(password)
         addSubview(buttonCheck)
+        
         
         NSLayoutConstraint.activate([
             
@@ -118,6 +128,12 @@ class LoginView : UIView {
                    buttonCheck.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
                    buttonCheck.heightAnchor.constraint(equalToConstant: 40),
                    buttonCheck.widthAnchor.constraint(equalToConstant: 150),
+                   
+                   // CONSTRAINTS DE BACKGROUNG IMAGEVIEW
+                   background.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+                   background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+                   background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+                   background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
                ])
     }
     
