@@ -66,7 +66,7 @@ final class ApiClient {
     task.resume()
   }
   
-  /*func getHeroes(completion: @escaping ([HeroModel], Error?) -> Void) {
+  func getHeroes(completion: @escaping ([HeroeModel], Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/heros/all"), let token = self.token else {
       completion([], NetworkError.malformedURL)
       return
@@ -91,7 +91,7 @@ final class ApiClient {
         return
       }
       
-      guard let response = try? JSONDecoder().decode([HeroModel].self, from: data) else {
+      guard let response = try? JSONDecoder().decode([HeroeModel].self, from: data) else {
         completion([], NetworkError.decodingFailed)
         return
       }
@@ -101,7 +101,7 @@ final class ApiClient {
     task.resume()
   }
     
-    func getHeroByName(name: String, completion: @escaping (HeroModel?, Error?) -> Void) {
+    func getHeroByName(name: String, completion: @escaping (HeroeModel?, Error?) -> Void) {
       guard let url = URL(string: "\(Constants.api_base_url)/heros/all"), let token = self.token else {
         completion(nil, NetworkError.malformedURL)
         return
@@ -126,7 +126,7 @@ final class ApiClient {
           return
         }
         
-        guard let response = try? JSONDecoder().decode([HeroModel].self, from: data) else {
+        guard let response = try? JSONDecoder().decode([HeroeModel].self, from: data) else {
           completion(nil, NetworkError.decodingFailed)
           return
         }
@@ -136,5 +136,5 @@ final class ApiClient {
       task.resume()
     }
   
-*/
+
 }

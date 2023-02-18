@@ -10,6 +10,16 @@ import UIKit
 
 class HeroListView : UIView {
     
+    // CONSTRUCTORES
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        startView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // DEFINICIÓN DE LOS ATRIBUTOS DE LA VISTA
     let title = {
        let label = UILabel()
@@ -25,6 +35,47 @@ class HeroListView : UIView {
     
     let table = {
        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(HeroeCell.self, forCellReuseIdentifier: "customCell")
         
+        return table
     }()
+    
+    let background = {
+        let image = UIImageView()
+        image.image = UIImage(named: "dragon.jpg")
+        image.alpha = 0.70
+        image.contentMode = .scaleToFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        return image
+    }()
+    
+    
+    func startView() {
+        
+        addSubview(background)
+        addSubview(title)
+        addSubview(table)
+        
+        NSLayoutConstraint.activate([
+            // CONSTRAINTS DEL BACKGROUND
+            background.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            
+            // CONSTRAINTS DEL TITLE
+            title.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            title.heightAnchor.constraint(equalToConstant: 30),
+            
+            // CONSTRAINTS DEL BACKGROUND
+            table.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            table.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 15),
+            table.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: 0),
+            table.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: 0),
+        ])
+    }
 }

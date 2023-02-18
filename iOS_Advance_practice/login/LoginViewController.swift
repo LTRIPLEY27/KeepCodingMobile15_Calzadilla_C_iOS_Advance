@@ -15,9 +15,12 @@ class LoginViewController: UIViewController {
     var email : UITextField?
     var password : UITextField?
     var button : UIButton?
+
+    var delegate : LoginDelegate?
     
-    init() {
+    init(delegate : LoginDelegate) {
         super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
     }
     
     required init?(coder: NSCoder) {
