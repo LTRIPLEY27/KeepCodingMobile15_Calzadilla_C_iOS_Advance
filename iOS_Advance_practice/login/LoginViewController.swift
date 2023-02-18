@@ -10,10 +10,11 @@ import UIKit
 class LoginViewController: UIViewController {
     
     var mainView: LoginView {self.view as! LoginView}
-    
-    var login : UILabel?
-    
-
+    var viewModel : LoginViewModel?
+    //var title : UILabel?
+    var email : UITextField?
+    var password : UITextField?
+    var button : UIButton?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -23,13 +24,50 @@ class LoginViewController: UIViewController {
         super.init(coder: coder)
     }
     
+    // INICIALIZACIÓN DE LOS ELEMENTOS DE LA VISTA
     override func loadView() {
+        // jerarquía
         let loginView = LoginView()
         
-        login = loginView.title
+        //title = loginView.getTitle()
+        email = loginView.getEmail()
+        password = loginView.getPasswod()
+        button = loginView.getButton()
         
         view = loginView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel = LoginViewModel()
+        button?.addTarget(self, action: #selector(letIn), for: .touchUpInside)
+    }
 
+    @objc
+    func letIn() {
+        
+        guard let email = email?.text, let password = password?.text else{
+            return
+        }
+        
+        viewModel?.checkUser = { [weak self] token, error in
+            
+            if !token.isEmpty {
+                DispatchQueue.main.async {
+                    debugPrint(token)
+                }
+            }
+            
+            if !error.isEmpty {
+                DispatchQueue.main.async {
+                    debugPrint(error)
+                }
+            }
+        }
+        
+        viewModel?.userVerified(email: email, password: password)
+    }
+    
+    
     }
     
