@@ -17,6 +17,9 @@
 		2546E1DA299FA462006BCA17 /* iOS_Advance_practiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1D9299FA462006BCA17 /* iOS_Advance_practiceTests.swift */; };
 		2546E1E4299FA462006BCA17 /* iOS_Advance_practiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1E3299FA462006BCA17 /* iOS_Advance_practiceUITests.swift */; };
 		2546E1E6299FA462006BCA17 /* iOS_Advance_practiceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1E5299FA462006BCA17 /* iOS_Advance_practiceUITestsLaunchTests.swift */; };
+		2546E1F6299FA677006BCA17 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1F5299FA677006BCA17 /* LoginView.swift */; };
+		2546E1F8299FD65F006BCA17 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1F7299FD65F006BCA17 /* LoginViewController.swift */; };
+		2546E1FA299FE1DA006BCA17 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1F9299FE1DA006BCA17 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		2546E1DF299FA462006BCA17 /* iOS_Advance_practiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOS_Advance_practiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2546E1E3299FA462006BCA17 /* iOS_Advance_practiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Advance_practiceUITests.swift; sourceTree = "<group>"; };
 		2546E1E5299FA462006BCA17 /* iOS_Advance_practiceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Advance_practiceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2546E1F5299FA677006BCA17 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2546E1F7299FD65F006BCA17 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2546E1F9299FE1DA006BCA17 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		2546E1BE299FA45F006BCA17 /* iOS_Advance_practice */ = {
 			isa = PBXGroup;
 			children = (
+				2546E1F2299FA475006BCA17 /* login */,
 				2546E1BF299FA45F006BCA17 /* AppDelegate.swift */,
 				2546E1C1299FA45F006BCA17 /* SceneDelegate.swift */,
 				2546E1C3299FA45F006BCA17 /* ViewController.swift */,
@@ -128,6 +135,16 @@
 				2546E1E5299FA462006BCA17 /* iOS_Advance_practiceUITestsLaunchTests.swift */,
 			);
 			path = iOS_Advance_practiceUITests;
+			sourceTree = "<group>";
+		};
+		2546E1F2299FA475006BCA17 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				2546E1F5299FA677006BCA17 /* LoginView.swift */,
+				2546E1F7299FD65F006BCA17 /* LoginViewController.swift */,
+				2546E1F9299FE1DA006BCA17 /* LoginViewModel.swift */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2546E1F8299FD65F006BCA17 /* LoginViewController.swift in Sources */,
 				2546E1C4299FA45F006BCA17 /* ViewController.swift in Sources */,
 				2546E1CA299FA45F006BCA17 /* iOS_Advance_practice.xcdatamodeld in Sources */,
 				2546E1C0299FA45F006BCA17 /* AppDelegate.swift in Sources */,
+				2546E1F6299FA677006BCA17 /* LoginView.swift in Sources */,
 				2546E1C2299FA45F006BCA17 /* SceneDelegate.swift in Sources */,
+				2546E1FA299FE1DA006BCA17 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
