@@ -7,9 +7,9 @@
 
 import Foundation
 
-var token : String = ""
+var tokenLog : String = ""
 var apiClient : ApiClient?
 
 func isAUserOk() -> Bool {
-    return !token.isEmpty
+    return !tokenLog.isEmpty
 }

@@ -32,7 +32,6 @@ class LoginViewController: UIViewController {
         // jerarquía
         let loginView = LoginView()
         
-        //title = loginView.getTitle()
         email = loginView.getEmail()
         password = loginView.getPasswod()
         button = loginView.getButton()
@@ -44,6 +43,22 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         viewModel = LoginViewModel()
         button?.addTarget(self, action: #selector(letIn), for: .touchUpInside)
+        
+        // uso del debug if
+        /*#if DEBUG
+        
+        email?.text = "isabel.calzadilla.18@gmail.com"
+        password?.text = "root"
+        
+        #endif*/
+        
+        
+        #if DEBUG
+        
+        email?.text = "pmg@test.com"
+        password?.text = "!Test1234"
+        
+        #endif
     }
 
     @objc
@@ -56,15 +71,22 @@ class LoginViewController: UIViewController {
         viewModel?.checkUser = { [weak self] token, error in
             
             if !token.isEmpty {
-                DispatchQueue.main.async {
-                    debugPrint(token)
-                }
+                
+                // DECLARACION DEL TOKEN COMO GLOBAL PARA RECIBIR LAS LLAMADAS API
+                tokenLog = token
+                debugPrint("tokenlog" , tokenLog)
+
+                self?.delegate?.dismiss()
+                
+                return
             }
             
             if !error.isEmpty {
                 DispatchQueue.main.async {
                     debugPrint(error)
                 }
+                
+                tokenLog = ""
             }
         }
         

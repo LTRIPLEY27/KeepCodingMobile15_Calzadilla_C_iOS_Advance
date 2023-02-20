@@ -37,6 +37,8 @@ class HeroListView : UIView {
        let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(HeroeCell.self, forCellReuseIdentifier: "customCell")
+        table.alpha = 0.80
+        table.layer.cornerRadius = 20
         
         return table
     }()
@@ -66,16 +68,16 @@ class HeroListView : UIView {
             background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             
             // CONSTRAINTS DEL TITLE
-            title.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: 60),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             title.heightAnchor.constraint(equalToConstant: 30),
             
             // CONSTRAINTS DEL BACKGROUND
             table.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
-            table.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 15),
-            table.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: 0),
-            table.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: 0),
+            table.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 20),
+            table.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -20),
+            table.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -25),
         ])
     }
 }

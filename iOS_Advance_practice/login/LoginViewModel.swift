@@ -9,8 +9,9 @@ import Foundation
 
 class LoginViewModel : NSObject {
     
-    // TRAIÑING CLOUSURE QUE VALIDARÁ LOS PARÁMETROS DEL TOKEN
+    // TRAILING CLOUSURE QUE VALIDARÁ LOS PARÁMETROS DEL TOKEN
     var checkUser : ((_ token : String, _ error : String) -> Void)?
+    var update: ((_ heroes: [HeroeModel]) -> Void)?
     
     func userVerified(email : String, password : String) -> Void {
         debugPrint(email)
@@ -31,5 +32,8 @@ class LoginViewModel : NSObject {
             
             debugPrint(token)
         }
+        
+    
     }
+
 }

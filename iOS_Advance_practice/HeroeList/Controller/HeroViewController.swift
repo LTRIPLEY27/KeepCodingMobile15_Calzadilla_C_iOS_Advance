@@ -16,6 +16,7 @@ class HeroViewController : UIViewController {
     var heroeViewModel : HeroViewModel? // refiere al viewmodel
     private var tableDatasourse : HeroeDataSource?
     private var tableDelegate : HeroeListDelegate?
+    
     var login : LoginViewModel?
     var loginController : LoginViewController?
     
@@ -27,12 +28,13 @@ class HeroViewController : UIViewController {
         super.viewDidLoad()
         
         putElementsOnTable()
-        pushTheCell()
+        //pushTheCell()
 
         if !isAUserOk() {
-            loginController = LoginViewController(delegate : self)
+            //INSTANCIACIÓN DEL LOGINVIEW CON ÉSTE HEROCONTROLLER PARA CARGA DE DATOS
+            loginController = LoginViewController(delegate: self)
             
-            if let loginController {
+            if let loginController = loginController {
                 loginController.modalPresentationStyle = .fullScreen
                 self.navigationController?.present(loginController, animated: true)
             }
@@ -45,14 +47,15 @@ class HeroViewController : UIViewController {
     
     // USO DEL DELEGADO DE LA TABLA PARA POSICIONAR ELEMENTOS
     func putElementsOnTable() {
+        tableDelegate = HeroeListDelegate()
         tableDatasourse = HeroeDataSource(tableView: mainView.table)
         mainView.table.dataSource = tableDatasourse
         mainView.table.delegate = tableDelegate
-        tableDelegate = HeroeListDelegate()
+        
     }
     
     // DEFINICIÓN DEL VALOR DE LA CELDA PULSADA
-    func pushTheCell() {
+    /*func pushTheCell() {
         tableDelegate?.dipTapOnCell = { [weak self] index in
             // captura del datasource
             guard let datasource = self?.tableDatasourse else { return }
@@ -60,18 +63,49 @@ class HeroViewController : UIViewController {
             let heroeModel = datasource.heroes[index]
             
             // acá debe de ir el detail !!!!
-            //self?.p
+            //self?.present()
         }
-    }
+    }**/
     
     func getValues() {
+        /*
+        heroeViewModel?.update = { [weak self] heros in
+            
+            if !heros.isEmpty {
+                self?.heroes = heros
+                self?.tableDatasourse?.set(heroes: heros)
+            }
+
+            debugPrint("aca vas  ????")
+
+        }
+        /*if let heroeViewModel {
+            heroeViewModel.update = { [weak self] heroe in
+                self?.heroes = heroe
+                self?.tableDatasourse?.set(heroes: heroe)
+                debugPrint("aca vas  ????")
+            }
+            
+            heroeViewModel.chargeInfo()
+        }*/
+        heroeViewModel?.chargeInfo()*/
+        let api = ApiClient(token: tokenLog)
         
-        heroeViewModel?.update = { [weak self] heroes in
-            self?.heroes = heroes
-            self?.tableDatasourse?.set(heroes: heroes)
+        heroeViewModel = HeroViewModel(apiClient: api)
+        
+        heroeViewModel!.update = { [weak self] heros in
+            
+            if !heros.isEmpty {
+                self?.heroes = heros
+                self?.tableDatasourse?.set(heroes: heros)
+            }
+
+            debugPrint("aca vas  ????")
+            
         }
         
-        heroeViewModel?.chargeInfo()
+        debugPrint("aca vas", heroes)
+        heroeViewModel!.chargeInfo()
     }
 }
 

@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct HeroeModel : Codable{
-    let id : String
-    let name : String
-    let photo : String
-    let description : String
-    let favorite : Bool
+struct HeroeModel : Decodable {
+    var id : String
+    var name : String
+    var photo : String
+    var description : String
+    var favorite : Bool
 }
