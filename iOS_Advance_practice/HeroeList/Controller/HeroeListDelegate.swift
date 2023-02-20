@@ -14,7 +14,7 @@ class HeroeListDelegate : NSObject, UITableViewDelegate {
     var dipTapOnCell : ((Int) -> Void)?
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        120
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

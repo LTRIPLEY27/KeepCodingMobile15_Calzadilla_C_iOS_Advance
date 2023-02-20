@@ -33,6 +33,7 @@
 		25C5AC8E29A144290017A3F9 /* HeroeListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC8D29A144290017A3F9 /* HeroeListDelegate.swift */; };
 		25C5AC9129A1548A0017A3F9 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC9029A1548A0017A3F9 /* LoginDelegate.swift */; };
 		25C5AC9529A160E10017A3F9 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC9429A160E10017A3F9 /* Globals.swift */; };
+		25E7583229A3FF22004FD845 /* TabBarClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7583129A3FF22004FD845 /* TabBarClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		25C5AC8D29A144290017A3F9 /* HeroeListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeListDelegate.swift; sourceTree = "<group>"; };
 		25C5AC9029A1548A0017A3F9 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		25C5AC9429A160E10017A3F9 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		25E7583129A3FF22004FD845 /* TabBarClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				25C5AC7329A0EABF0017A3F9 /* Constants.swift */,
+				25E7583129A3FF22004FD845 /* TabBarClass.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				25C5AC7129A0EA470017A3F9 /* ApiClient.swift in Sources */,
 				25C5AC7B29A0F9190017A3F9 /* HeroListView.swift in Sources */,
 				2546E1C0299FA45F006BCA17 /* AppDelegate.swift in Sources */,
+				25E7583229A3FF22004FD845 /* TabBarClass.swift in Sources */,
 				25C5AC9529A160E10017A3F9 /* Globals.swift in Sources */,
 				2546E1F6299FA677006BCA17 /* LoginView.swift in Sources */,
 				2546E1C2299FA45F006BCA17 /* SceneDelegate.swift in Sources */,

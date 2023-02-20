@@ -35,10 +35,10 @@ class HeroeCell : UITableViewCell {
     
     let titleName : UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .red
         label.numberOfLines = 0
         label.textAlignment = .justified
-        label.font = .systemFont(ofSize: 17)
+        label.font = .boldSystemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -55,12 +55,13 @@ class HeroeCell : UITableViewCell {
         return label
     }()
     
-    let scroll : UIScrollView = {
+    /*let scroll : UIScrollView = {
        let scroll = UIScrollView()
+        
         scroll.translatesAutoresizingMaskIntoConstraints = false
         
         return scroll
-    }()
+    }()*/
     
     let background : UIImageView = {
         let image = UIImageView()
@@ -75,9 +76,9 @@ class HeroeCell : UITableViewCell {
         addSubview(background)
         addSubview(image)
         addSubview(titleName)
-        //addSubview(descriptio)
-        addSubview(scroll)
-        scroll.addSubview(descriptio)
+        addSubview(descriptio)
+        //addSubview(scroll)
+        //scroll.addSubview(descriptio)
         
         NSLayoutConstraint.activate([
             // CONSTRAINTS BACKGROUND
@@ -89,29 +90,26 @@ class HeroeCell : UITableViewCell {
             // CONSTRAINTS PHOTO
             image.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            image.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10),
-            image.widthAnchor.constraint(equalToConstant: 120),
-            image.heightAnchor.constraint(equalToConstant: 80),
+            image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -180),
+            image.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             
             // CONSTRAINTS TITLE
             titleName.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             titleName.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 5),
-            titleName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10),
+            titleName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             titleName.heightAnchor.constraint(equalToConstant: 30),
             
-            // CONSTRAINTS description into scroll
-            scroll.topAnchor.constraint(equalTo: topAnchor),
-            scroll.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scroll.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scroll.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+            // CONSTRAINTS description
+            descriptio.topAnchor.constraint(equalTo: titleName.topAnchor, constant: 20),
+            descriptio.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            descriptio.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            descriptio.bottomAnchor.constraint(equalTo: bottomAnchor, constant:  10),
         ])
     }
     
     // SETTING VALUES
     // UBICA LOS ELEMENTOS USANDO EL STRUCT MODEL
-    // USO DE LA LIBRERÍA KINGFISHER PARA EL TRATAMIENTO D ELA IMAGEN
+    // USO DE LA LIBRERÍA KINGFISHER PARA EL TRATAMIENTO DE LA IMAGEN
     func putElementsOnView(_ model : HeroeModel) {
         self.titleName.text = model.name
         self.descriptio.text = model.description

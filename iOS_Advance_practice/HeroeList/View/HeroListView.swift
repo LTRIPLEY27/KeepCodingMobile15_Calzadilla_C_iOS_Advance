@@ -37,7 +37,8 @@ class HeroListView : UIView {
        let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(HeroeCell.self, forCellReuseIdentifier: "customCell")
-        table.alpha = 0.80
+        table.backgroundColor = .white
+        table.alpha = 0.90
         table.layer.cornerRadius = 20
         
         return table
@@ -46,7 +47,7 @@ class HeroListView : UIView {
     let background = {
         let image = UIImageView()
         image.image = UIImage(named: "dragon.jpg")
-        image.alpha = 0.70
+        image.alpha = 0.95
         image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
