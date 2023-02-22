@@ -11,7 +11,17 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    // DECLARACIÓN DE UNA VARIABLE ESTÁTICA 'APPDELEGATE' PARA INICIALIZAR EL MODELO APENAS ARRANCA LA APP
+    lazy var dataManager : DataManager = .init(model: "Heroe")
+    
+    static let staticAppDelegate : AppDelegate = {
+        
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Error on the datamanager load")
+        }
+        
+        return delegate
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

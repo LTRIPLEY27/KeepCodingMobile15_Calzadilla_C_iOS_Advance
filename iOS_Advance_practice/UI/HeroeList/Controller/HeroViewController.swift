@@ -20,6 +20,10 @@ class HeroViewController : UIViewController {
     var login : LoginViewModel?
     var loginController : LoginViewController?
     
+    // declaración de la variable datamanager para gestionar la base de datos
+    var responseData = AppDelegate.staticAppDelegate.dataManager.context
+    var dataTable : Heroe?
+    
     override func loadView() {
         view = HeroListView()
     }
@@ -68,27 +72,6 @@ class HeroViewController : UIViewController {
     }**/
     
     func getValues() {
-        /*
-        heroeViewModel?.update = { [weak self] heros in
-            
-            if !heros.isEmpty {
-                self?.heroes = heros
-                self?.tableDatasourse?.set(heroes: heros)
-            }
-
-            debugPrint("aca vas  ????")
-
-        }
-        /*if let heroeViewModel {
-            heroeViewModel.update = { [weak self] heroe in
-                self?.heroes = heroe
-                self?.tableDatasourse?.set(heroes: heroe)
-                debugPrint("aca vas  ????")
-            }
-            
-            heroeViewModel.chargeInfo()
-        }*/
-        heroeViewModel?.chargeInfo()*/
         let api = ApiClient(token: tokenLog)
         
         heroeViewModel = HeroViewModel(apiClient: api)
@@ -98,10 +81,16 @@ class HeroViewController : UIViewController {
             if !heros.isEmpty {
                 self?.heroes = heros
                 self?.tableDatasourse?.set(heroes: heros)
+                self?.dataTable = Heroe(context: self!.responseData)
+                
+                // transaction a la datatable para almacenar
+                try? self?.responseData.save()
+                
+                let x = self?.dataTable
+                debugPrint("table heroe", x)
             }
 
             debugPrint("aca vas  ????")
-            
         }
         
         debugPrint("aca vas", heroes)
