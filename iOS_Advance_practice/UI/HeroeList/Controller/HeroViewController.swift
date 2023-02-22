@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class HeroViewController : UIViewController {
     
@@ -21,8 +22,12 @@ class HeroViewController : UIViewController {
     var loginController : LoginViewController?
     
     // declaración de la variable datamanager para gestionar la base de datos
+    //**************************
     var responseData = AppDelegate.staticAppDelegate.dataManager.context
     var dataTable : Heroe?
+    
+    // VARIABLE INYECTOR DE LA DEPENDENCIA FETCH PARA LA TABLA
+    var heroFetch : NSFetchRequest<Heroe>?
     
     override func loadView() {
         view = HeroListView()
@@ -81,13 +86,22 @@ class HeroViewController : UIViewController {
             if !heros.isEmpty {
                 self?.heroes = heros
                 self?.tableDatasourse?.set(heroes: heros)
-                self?.dataTable = Heroe(context: self!.responseData)
                 
-                // transaction a la datatable para almacenar
-                try? self?.responseData.save()
+                // LLAMADA A LA FUNCIÓN PARA INSERTAR LOS DATOS DE LA API A LA TABLA
+                self?.insertToTable()
                 
-                let x = self?.dataTable
-                debugPrint("table heroe", x)
+                // CARGA DEL FETCH
+                self?.heroFetch = Heroe.fetchRequest()
+                
+                // captura de errore
+                do{
+                    let result = try self?.responseData.fetch((self?.heroFetch)!)
+                    
+                    debugPrint("here is the result \n", result)
+                    
+                } catch let error as NSError {
+                    fatalError("Error from the table --> exploiting  \(error)")
+                }
             }
 
             debugPrint("aca vas  ????")
@@ -96,7 +110,37 @@ class HeroViewController : UIViewController {
         debugPrint("aca vas", heroes)
         heroeViewModel!.chargeInfo()
     }
+    
+    func insertToTable() {
+        
+        // to check if a table or not
+        self.dataTable = Heroe(context: self.responseData)
+        
+        for x in heroes {
+            //self.dataTable = Heroe(context: self.responseData)
+            
+            // indicación de las propiedades de la tabla y setteo de las propiedades del model
+            self.dataTable?.id = x.id
+            self.dataTable?.name = x.name
+            self.dataTable?.descripcion = x.description
+            self.dataTable?.photo = x.photo
+            //self.dataTable?.favorite = x.favorite
+            
+            // transaction a la datatable para almacenar
+            do {
+                try self.responseData.save()
+            }
+            catch let error {
+                debugPrint(error)
+            }
+            
+            let x = self.dataTable
+            debugPrint("table heroe", x!)
+        }
+    }
 }
+
+
 
 // APLICACIÓN DEL PROTOCOL
 extension HeroViewController : LoginDelegate {
