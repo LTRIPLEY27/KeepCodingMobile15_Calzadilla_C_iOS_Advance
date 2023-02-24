@@ -103,10 +103,10 @@ class HeroViewController : UIViewController {
                         guard let self else { return }
                         
                         self.heroes = heros
-                        self.tableDatasourse?.set(heroes: heros)
-                        
                         // LLAMADA A LA FUNCIÓN PARA INSERTAR LOS DATOS DE LA API A LA TABLA
-                        self.heroeViewModel?.insertToTable(heroes : self.heroes)
+                        var heroesFromTable =  self.heroeViewModel?.insertToTable(heroes : self.heroes)
+                        
+                        self.tableDatasourse?.set(heroes: heroesFromTable!)
                         
                         debugPrint(self.heroes)
                         // CARGA DEL FETCH
@@ -117,12 +117,13 @@ class HeroViewController : UIViewController {
                 }
             }
             else {
-            
+                var heroesFromTable =  self.heroeViewModel?.chargeFromData(data: result)
+                
+                self.tableDatasourse?.set(heroes: heroesFromTable!)
                 debugPrint("from data --> " ,heroes)
             }
-            
-            debugPrint("aca vas", heroes)
-            heroeViewModel.chargeInfo()
+
+        heroeViewModel.chargeInfo()
         debugPrint("here is the result \n", result)
         
     } catch let error as NSError {

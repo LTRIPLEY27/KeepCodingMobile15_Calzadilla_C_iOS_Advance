@@ -49,7 +49,7 @@ class HeroViewModel : NSObject {
     
 
     // FUNCIONES REFERENTES A LA ALIMENTACIÓN DE DATOS
-    func insertToTable(heroes : [HeroeModel]) {
+    func insertToTable(heroes : [HeroeModel]) -> [Heroe]{
 
         heroes.forEach{hero in
             self.dataTable = Heroe(context: self.responseData)
@@ -65,42 +65,17 @@ class HeroViewModel : NSObject {
         debugPrint("Heroes are in the table!!!")
         AppDelegate.staticAppDelegate.dataManager.saveContext()
    
+        return heroesTable
     }
     
     // MAPPEO DE LOS PERSONAJES EN LA TABLA
-    func chargeFromData(data : [Heroe]) -> [HeroeModel] {
+    func chargeFromData(data : [Heroe]) -> [Heroe] {
         
         data.forEach{ hero in
-            
-            guard var heroe = self.heroeOnLocal else { return }
-            
-            heroe.id = hero.id
-            heroe.name = hero.name
-            heroe.description = hero.descripcion
-            heroe.photo = hero.photo
-            //heroe.favorite = hero.favorite
-            
-            heroesOnLocal.append(heroe)
+            heroesTable.append(hero)
         }
-        
-        return heroesOnLocal
+        return heroesTable
     }
-    // FUNCIÓN DE ALMACENAJE DE LOS REGISTROS EN LA DATALOCAL
-   /* func charactersOnLocal <T : Codable>() -> [T] {
-        // USO DE LOS USER DEFAULTS PARA REALIZAR LA CONSULTA
-        if let addCharacter = UserDefaults.standard.object(forKey: Self.allCharacters) as? Data {
-            do {
-                let saveCharacter = try JSONDecoder().decode([T].self, from: addCharacter)
-                return saveCharacter
-            }
-            catch
-            {
-                print("Error adding data to local")
-                return []
-            }
-        } else {
-                return []
-                }
-    }*/
+
 }
 

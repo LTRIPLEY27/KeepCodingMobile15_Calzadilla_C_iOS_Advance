@@ -110,7 +110,7 @@ class HeroeCell : UITableViewCell {
     // SETTING VALUES
     // UBICA LOS ELEMENTOS USANDO EL STRUCT MODEL
     // USO DE LA LIBRERÍA KINGFISHER PARA EL TRATAMIENTO DE LA IMAGEN
-    func putElementsOnView(_ model : HeroeModel) {
+    func putElementsOnView(_ model : Heroe) {
         self.titleName.text = model.name
         self.descriptio.text = model.description
         self.image.kf.setImage(with: URL(string: model.photo ?? ""))

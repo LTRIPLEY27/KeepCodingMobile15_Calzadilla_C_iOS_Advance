@@ -13,7 +13,7 @@ class HeroeDataSource : NSObject, UITableViewDataSource {
     private let tableView : UITableView
     
     // VARIABLE DECLARADA CON SETTER
-    private(set) var heroes : [HeroeModel] = [] {
+    private(set) var heroes : [Heroe] = [] {
         didSet {
             // CON CADA SETTER ACTUALIZA EL HILO PRINCIPAL
             DispatchQueue.main.async {
@@ -23,7 +23,7 @@ class HeroeDataSource : NSObject, UITableViewDataSource {
     }
     
     // constructores
-    init(tableView : UITableView, heroes : [HeroeModel] = []) {
+    init(tableView : UITableView, heroes : [Heroe] = []) {
         self.tableView = tableView
         self.heroes = heroes
     }
@@ -42,7 +42,7 @@ class HeroeDataSource : NSObject, UITableViewDataSource {
         return cell
     }
      
-    func set(heroes : [HeroeModel]) {
+    func set(heroes : [Heroe]) {
         self.heroes = heroes
     }
 }
