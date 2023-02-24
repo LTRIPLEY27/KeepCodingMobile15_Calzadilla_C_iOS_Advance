@@ -1,0 +1,50 @@
+//
+//  HeroeDetailController.swift
+//  iOS_Advance_practice
+//
+//  Created by IsaDevs on 24/2/23.
+//
+
+import Foundation
+import UIKit
+
+class HeroeDetailController : UIViewController {
+    
+    var detail : HeroDetailView { self.view as! HeroDetailView}
+    
+    /*var image : UIImageView?
+    var name : UILabel?
+    var descripciom : UILabel?*/
+    
+    var heroe : Heroe?
+    
+    init(heroe : Heroe){
+        super.init(nibName: nil, bundle: nil)
+        self.heroe = heroe
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        
+        putElementsOnView()
+
+    }
+    
+    override func viewDidLoad() {
+        
+    }
+
+    func putElementsOnView() {
+        
+        let detail = HeroDetailView()
+        
+        detail.image.kf.setImage(with: URL(string: self.heroe?.photo ?? ""))
+        detail.titleName.text = heroe?.name
+        detail.descriptio.text = heroe?.descripcion
+        
+        view = HeroDetailView()
+    }
+}

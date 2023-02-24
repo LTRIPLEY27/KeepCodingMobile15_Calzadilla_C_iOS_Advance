@@ -108,7 +108,7 @@ class HeroeCell : UITableViewCell {
     }
     
     // SETTING VALUES
-    // UBICA LOS ELEMENTOS USANDO EL STRUCT MODEL
+    // UBICA LOS ELEMENTOS USANDO EL MODEL
     // USO DE LA LIBRERÍA KINGFISHER PARA EL TRATAMIENTO DE LA IMAGEN
     func putElementsOnView(_ model : Heroe) {
         self.titleName.text = model.name

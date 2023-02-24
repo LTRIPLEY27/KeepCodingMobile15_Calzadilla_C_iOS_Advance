@@ -16,15 +16,18 @@ class HeroViewController : UIViewController {
     var heroes : [HeroeModel] = [] // clase heroe
     var heroesTable : [Heroe] = [] // clase heroe
     
-    var heroe : HeroeModel!
+    //enlaces a viewmodel
     var heroeViewModel : HeroViewModel? // refiere al viewmodel
     private var tableDatasourse : HeroeDataSource?
     private var tableDelegate : HeroeListDelegate?
     
+    //enlace con login
     var login : LoginViewModel?
     var loginController : LoginViewController?
     
-    // declaración de la variable datamanager para gestionar la base de datos
+    //enlace con detail
+    var detail : HeroDetailView?
+    var detailControl : HeroeDetailController?
     //**************************
     var responseData = AppDelegate.staticAppDelegate.dataManager.context
     var dataTable : Heroe?
@@ -40,7 +43,7 @@ class HeroViewController : UIViewController {
         super.viewDidLoad()
         
         putElementsOnTable()
-        //pushTheCell()
+        pushTheCell()
 
         if !isAUserOk() {
             //INSTANCIACIÓN DEL LOGINVIEW CON ÉSTE HEROCONTROLLER PARA CARGA DE DATOS
@@ -67,7 +70,8 @@ class HeroViewController : UIViewController {
     }
     
     // DEFINICIÓN DEL VALOR DE LA CELDA PULSADA
-    /*func pushTheCell() {
+    func pushTheCell() {
+        
         tableDelegate?.dipTapOnCell = { [weak self] index in
             // captura del datasource
             guard let datasource = self?.tableDatasourse else { return }
@@ -75,9 +79,16 @@ class HeroViewController : UIViewController {
             let heroeModel = datasource.heroes[index]
             
             // acá debe de ir el detail !!!!
-            //self?.present()
+            self?.detailControl = HeroeDetailController(heroe: heroeModel)
+            
+            guard let value = self?.detailControl else { return }
+            value.modalPresentationStyle = .fullScreen
+            value.navigationController?.present(value, animated: true)
+            //self?.detailControl?.modalPresentationStyle = .fullScreen
+            //self?.navigationController?.present(self.detailControl?, animated: true)
+  
         }
-    }**/
+    }
     
     func getValues() {
         

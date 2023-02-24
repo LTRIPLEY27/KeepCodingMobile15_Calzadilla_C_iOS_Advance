@@ -16,6 +16,7 @@
 		2546E1F6299FA677006BCA17 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1F5299FA677006BCA17 /* LoginView.swift */; };
 		2546E1F8299FD65F006BCA17 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1F7299FD65F006BCA17 /* LoginViewController.swift */; };
 		2546E1FA299FE1DA006BCA17 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2546E1F9299FE1DA006BCA17 /* LoginViewModel.swift */; };
+		2589299829A9498900226A36 /* HeroeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2589299729A9498900226A36 /* HeroeDetailController.swift */; };
 		25C5AC7129A0EA470017A3F9 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7029A0EA470017A3F9 /* ApiClient.swift */; };
 		25C5AC7429A0EABF0017A3F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7329A0EABF0017A3F9 /* Constants.swift */; };
 		25C5AC7B29A0F9190017A3F9 /* HeroListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7A29A0F9190017A3F9 /* HeroListView.swift */; };
@@ -66,6 +67,7 @@
 		2546E1F5299FA677006BCA17 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2546E1F7299FD65F006BCA17 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2546E1F9299FE1DA006BCA17 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		2589299729A9498900226A36 /* HeroeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeDetailController.swift; sourceTree = "<group>"; };
 		25C5AC7029A0EA470017A3F9 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		25C5AC7329A0EABF0017A3F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		25C5AC7A29A0F9190017A3F9 /* HeroListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListView.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				25C5AC8229A109D40017A3F9 /* HeroeDetail.swift */,
+				2589299729A9498900226A36 /* HeroeDetailController.swift */,
 			);
 			path = HeroeDetail;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				25C5AC7F29A1060C0017A3F9 /* HeroeModel.swift in Sources */,
 				25C5AC9129A1548A0017A3F9 /* LoginDelegate.swift in Sources */,
 				25C5AC8329A109D40017A3F9 /* HeroeDetail.swift in Sources */,
+				2589299829A9498900226A36 /* HeroeDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
