@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class HeroViewModel : NSObject {
     
@@ -16,6 +17,9 @@ class HeroViewModel : NSObject {
     var update: ((_ heroes: [HeroeModel]) -> Void)?
     
     var heroesTable : [Heroe] = []
+    
+    var heroesOnLocal : [HeroeModel] = []
+    var heroeOnLocal : HeroeModel?
     
     //****** to check
     var dataTable : Heroe?
@@ -39,11 +43,6 @@ class HeroViewModel : NSObject {
 
             // retorna el clousure de vuelta con los valores
             self?.update?(heroes)
-            
-            //heroesTable = heroes
-            
-            debugPrint(heroes)
-            
             debugPrint("here is the token ->",tokenLog)
         }
     }
@@ -51,12 +50,9 @@ class HeroViewModel : NSObject {
 
     // FUNCIONES REFERENTES A LA ALIMENTACIÓN DE DATOS
     func insertToTable(heroes : [HeroeModel]) {
-        
-        // to check if a table or not
-        self.dataTable = Heroe(context: self.responseData)
-        
+
         heroes.forEach{hero in
-            
+            self.dataTable = Heroe(context: self.responseData)
             guard let dataTable else { return }
             dataTable.id = hero.id
             dataTable.id = hero.id
@@ -71,8 +67,23 @@ class HeroViewModel : NSObject {
    
     }
     
-    func chargeFromData() {
+    // MAPPEO DE LOS PERSONAJES EN LA TABLA
+    func chargeFromData(data : [Heroe]) -> [HeroeModel] {
         
+        data.forEach{ hero in
+            
+            guard var heroe = self.heroeOnLocal else { return }
+            
+            heroe.id = hero.id
+            heroe.name = hero.name
+            heroe.description = hero.descripcion
+            heroe.photo = hero.photo
+            //heroe.favorite = hero.favorite
+            
+            heroesOnLocal.append(heroe)
+        }
+        
+        return heroesOnLocal
     }
     // FUNCIÓN DE ALMACENAJE DE LOS REGISTROS EN LA DATALOCAL
    /* func charactersOnLocal <T : Codable>() -> [T] {

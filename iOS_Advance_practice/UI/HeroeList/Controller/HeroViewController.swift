@@ -16,7 +16,7 @@ class HeroViewController : UIViewController {
     var heroes : [HeroeModel] = [] // clase heroe
     var heroesTable : [Heroe] = [] // clase heroe
     
-    var heroe : HeroeModel?
+    var heroe : HeroeModel!
     var heroeViewModel : HeroViewModel? // refiere al viewmodel
     private var tableDatasourse : HeroeDataSource?
     private var tableDelegate : HeroeListDelegate?
@@ -85,20 +85,18 @@ class HeroViewController : UIViewController {
         
         heroeViewModel = HeroViewModel(apiClient: api)
         
+        guard let heroeViewModel else { return }
         // CARGA DEL FETCH PARA VERIFICAR SI HAY DATOS INSERTADOS YA EN LA TABLA O EJECUTAR UN REQUEST A LA API
         self.heroFetch = Heroe.fetchRequest()
         
         // captura de errores y validación de valores en la tabla
         do{
             let result = try self.responseData.fetch((self.heroFetch)!)
-            
-            //heroes = changesToModel(data : result)
-            
-            debugPrint("hay tantos : --> ",heroes.count)
             debugPrint("hay tantos RESULST --> ", result.count)
             
             if result.isEmpty {
-                heroeViewModel!.update = { [weak self] heros in
+                // REFERENCIA Y VALIDACIÓN D ELOS VALORES DEL TRAINLING CLOUSURE DE HEROMODEL
+                heroeViewModel.update = { [weak self] heros in
                     
                     if !heros.isEmpty {
                         
@@ -107,57 +105,30 @@ class HeroViewController : UIViewController {
                         self.heroes = heros
                         self.tableDatasourse?.set(heroes: heros)
                         
-                        // LLAMADA A LA FUNCIÓN PARA INSERTAR LOS DATOS DE LA API A LA TABLA 
+                        // LLAMADA A LA FUNCIÓN PARA INSERTAR LOS DATOS DE LA API A LA TABLA
                         self.heroeViewModel?.insertToTable(heroes : self.heroes)
                         
                         debugPrint(self.heroes)
-                        
                         // CARGA DEL FETCH
                         self.heroFetch = Heroe.fetchRequest()
-                        
-                        // captura de errores
-                        do{
-                            let result = try self.responseData.fetch((self.heroFetch)!)
-                            
-                            debugPrint("here is the result from API \n", result)
-                            
-                        } catch let error as NSError {
-                            fatalError("Error from the table --> exploiting  \(error)")
-                        }
                     }
 
                     debugPrint("DESDE EL API FETCH ESTÁ MAL!!!")
+                }
             }
-
+            else {
+            
+                debugPrint("from data --> " ,heroes)
             }
             
             debugPrint("aca vas", heroes)
-            heroeViewModel!.chargeInfo()
+            heroeViewModel.chargeInfo()
         debugPrint("here is the result \n", result)
         
     } catch let error as NSError {
         fatalError("Error from the table --> exploiting  \(error)")
     }
 }
-        
-   /*
-    func insertToTable() {
-        self.dataTable = Heroe(context: self.responseData)
-        heroes.forEach{hero in
-            
-            guard let dataTable else { return }
-            dataTable.id = hero.id
-            dataTable.id = hero.id
-            dataTable.name = hero.name
-            dataTable.descripcion = hero.description
-            dataTable.photo = hero.photo
-            //dataTable?.favorite = hero.favorite
-            heroesTable.append(dataTable)
-        }
-        
-        AppDelegate.staticAppDelegate.dataManager.saveContext()
-       
-    }*/
 }
 
 
