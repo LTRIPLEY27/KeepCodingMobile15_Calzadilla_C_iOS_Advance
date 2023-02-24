@@ -14,6 +14,9 @@ class HeroViewController : UIViewController {
     // DECLARACIÓN VARIABLES ENLACE
     var mainView : HeroListView { self.view as! HeroListView } // casting de heroelist
     var heroes : [HeroeModel] = [] // clase heroe
+    var heroesTable : [Heroe] = [] // clase heroe
+    
+    var heroe : HeroeModel?
     var heroeViewModel : HeroViewModel? // refiere al viewmodel
     private var tableDatasourse : HeroeDataSource?
     private var tableDelegate : HeroeListDelegate?
@@ -77,67 +80,84 @@ class HeroViewController : UIViewController {
     }**/
     
     func getValues() {
+        
         let api = ApiClient(token: tokenLog)
         
         heroeViewModel = HeroViewModel(apiClient: api)
         
-        heroeViewModel!.update = { [weak self] heros in
+        // CARGA DEL FETCH PARA VERIFICAR SI HAY DATOS INSERTADOS YA EN LA TABLA O EJECUTAR UN REQUEST A LA API
+        self.heroFetch = Heroe.fetchRequest()
+        
+        // captura de errores y validación de valores en la tabla
+        do{
+            let result = try self.responseData.fetch((self.heroFetch)!)
             
-            if !heros.isEmpty {
-                self?.heroes = heros
-                self?.tableDatasourse?.set(heroes: heros)
-                
-                // LLAMADA A LA FUNCIÓN PARA INSERTAR LOS DATOS DE LA API A LA TABLA
-                self?.insertToTable()
-                
-                // CARGA DEL FETCH
-                self?.heroFetch = Heroe.fetchRequest()
-                
-                // captura de errore
-                do{
-                    let result = try self?.responseData.fetch((self?.heroFetch)!)
+            //heroes = changesToModel(data : result)
+            
+            debugPrint("hay tantos : --> ",heroes.count)
+            debugPrint("hay tantos RESULST --> ", result.count)
+            
+            if result.isEmpty {
+                heroeViewModel!.update = { [weak self] heros in
                     
-                    debugPrint("here is the result \n", result)
-                    
-                } catch let error as NSError {
-                    fatalError("Error from the table --> exploiting  \(error)")
-                }
+                    if !heros.isEmpty {
+                        
+                        guard let self else { return }
+                        
+                        self.heroes = heros
+                        self.tableDatasourse?.set(heroes: heros)
+                        
+                        // LLAMADA A LA FUNCIÓN PARA INSERTAR LOS DATOS DE LA API A LA TABLA 
+                        self.heroeViewModel?.insertToTable(heroes : self.heroes)
+                        
+                        debugPrint(self.heroes)
+                        
+                        // CARGA DEL FETCH
+                        self.heroFetch = Heroe.fetchRequest()
+                        
+                        // captura de errores
+                        do{
+                            let result = try self.responseData.fetch((self.heroFetch)!)
+                            
+                            debugPrint("here is the result from API \n", result)
+                            
+                        } catch let error as NSError {
+                            fatalError("Error from the table --> exploiting  \(error)")
+                        }
+                    }
+
+                    debugPrint("DESDE EL API FETCH ESTÁ MAL!!!")
             }
 
-            debugPrint("aca vas  ????")
-        }
+            }
+            
+            debugPrint("aca vas", heroes)
+            heroeViewModel!.chargeInfo()
+        debugPrint("here is the result \n", result)
         
-        debugPrint("aca vas", heroes)
-        heroeViewModel!.chargeInfo()
+    } catch let error as NSError {
+        fatalError("Error from the table --> exploiting  \(error)")
     }
-    
+}
+        
+   /*
     func insertToTable() {
-        
-        // to check if a table or not
         self.dataTable = Heroe(context: self.responseData)
-        
-        for x in heroes {
-            //self.dataTable = Heroe(context: self.responseData)
+        heroes.forEach{hero in
             
-            // indicación de las propiedades de la tabla y setteo de las propiedades del model
-            self.dataTable?.id = x.id
-            self.dataTable?.name = x.name
-            self.dataTable?.descripcion = x.description
-            self.dataTable?.photo = x.photo
-            //self.dataTable?.favorite = x.favorite
-            
-            // transaction a la datatable para almacenar
-            do {
-                try self.responseData.save()
-            }
-            catch let error {
-                debugPrint(error)
-            }
-            
-            let x = self.dataTable
-            debugPrint("table heroe", x!)
+            guard let dataTable else { return }
+            dataTable.id = hero.id
+            dataTable.id = hero.id
+            dataTable.name = hero.name
+            dataTable.descripcion = hero.description
+            dataTable.photo = hero.photo
+            //dataTable?.favorite = hero.favorite
+            heroesTable.append(dataTable)
         }
-    }
+        
+        AppDelegate.staticAppDelegate.dataManager.saveContext()
+       
+    }*/
 }
 
 

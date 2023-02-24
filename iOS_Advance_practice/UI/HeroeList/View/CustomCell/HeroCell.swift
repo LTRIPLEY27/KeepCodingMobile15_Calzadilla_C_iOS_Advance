@@ -113,6 +113,6 @@ class HeroeCell : UITableViewCell {
     func putElementsOnView(_ model : HeroeModel) {
         self.titleName.text = model.name
         self.descriptio.text = model.description
-        self.image.kf.setImage(with: URL(string: model.photo))
+        self.image.kf.setImage(with: URL(string: model.photo ?? ""))
     }
 }

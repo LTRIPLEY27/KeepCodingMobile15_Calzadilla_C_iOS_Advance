@@ -8,9 +8,10 @@
 import Foundation
 
 struct HeroeModel : Decodable {
-    var id : String
-    var name : String
-    var photo : String
-    var description : String
-    var favorite : Bool
+    var id : String?
+    var name : String?
+    var photo : String?
+    var description : String?
+    var favorite : Bool?
+    
 }

@@ -4,12 +4,12 @@
 //
 //  Created by IsaDevs on 22/2/23.
 //
-
+/*
 import Foundation
 import CoreData
 
 extension Heroe {
-    
+
     // '@NSManaged' --> Indica que es una propiedad gestionada
     @NSManaged var id : String?
     @NSManaged var name : String?
@@ -24,3 +24,8 @@ extension Heroe {
 
 // traduce el valor de la tabla a la entidad
 extension Heroe : Identifiable {}
+*/
+//
+
+
+
