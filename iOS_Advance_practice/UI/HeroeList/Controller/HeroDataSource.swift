@@ -37,6 +37,7 @@ class HeroeDataSource : NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! HeroeCell
         
         let hero = heroes[indexPath.row]
+        
         cell.putElementsOnView(hero)
         
         return cell

@@ -92,7 +92,7 @@ class HeroViewController : UIViewController {
         // captura de errores y validación de valores en la tabla
         do{
             let result = try self.responseData.fetch((self.heroFetch)!)
-            debugPrint("hay tantos RESULST --> ", result.count)
+            debugPrint("hay tantos RESULTS --> ", result.count)
             
             if result.isEmpty {
                 // REFERENCIA Y VALIDACIÓN D ELOS VALORES DEL TRAINLING CLOUSURE DE HEROMODEL
