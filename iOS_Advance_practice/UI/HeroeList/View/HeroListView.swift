@@ -26,6 +26,8 @@ class HeroListView : UIView {
         label.text = "Dragon Ball Characters"
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center
+        label.backgroundColor = .white
+        label.alpha = 0.80
         label.textColor = .red
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,12 +56,24 @@ class HeroListView : UIView {
         return image
     }()
     
+    let button = {
+        let button = UIButton()
+        button.backgroundColor = .red
+        button.setTitle("Log Out", for: .normal)
+        button.tintColor = .white
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
     
     func startView() {
         
         addSubview(background)
         addSubview(title)
         addSubview(table)
+        addSubview(button)
         
         NSLayoutConstraint.activate([
             // CONSTRAINTS DEL BACKGROUND
@@ -68,8 +82,14 @@ class HeroListView : UIView {
             background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             
+            button.topAnchor.constraint(equalTo: topAnchor, constant: 50),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 280),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            button.heightAnchor.constraint(equalToConstant: 30),
+            button.widthAnchor.constraint(equalToConstant: 40),
+            
             // CONSTRAINTS DEL TITLE
-            title.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            title.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 5),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             title.heightAnchor.constraint(equalToConstant: 30),
@@ -78,7 +98,7 @@ class HeroListView : UIView {
             table.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
             table.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 20),
             table.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -20),
-            table.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -25),
+            table.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -95),
         ])
     }
 }

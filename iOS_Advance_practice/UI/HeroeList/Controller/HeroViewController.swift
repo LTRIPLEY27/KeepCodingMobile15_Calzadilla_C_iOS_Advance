@@ -25,10 +25,7 @@ class HeroViewController : UIViewController {
     //enlace con login
     var login : LoginViewModel?
     var loginController : LoginViewController?
-    
-    //enlace con detail
-    //var detail : HeroDetailView?
-    //var detailControl : HeroeDetailController?
+
     //**************************
     var responseData = AppDelegate.staticAppDelegate.dataManager.context
     var dataTable : Heroe?
@@ -78,8 +75,6 @@ class HeroViewController : UIViewController {
             guard let datasource = self?.tableDatasourse else { return }
             
             let heroeModel = datasource.heroes[index]
-            
-            debugPrint("Indice pulsado --> ", heroeModel)
             let detail = HeroeDetailController()
             detail.detail.putElementsOnView(heroeModel)
             

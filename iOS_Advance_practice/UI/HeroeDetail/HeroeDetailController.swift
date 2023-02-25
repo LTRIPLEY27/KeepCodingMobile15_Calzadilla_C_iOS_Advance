@@ -12,15 +12,11 @@ class HeroeDetailController : UIViewController {
     
     var detail : HeroDetailView { self.view as! HeroDetailView}
     
-    /*var image : UIImageView?
-    var name : UILabel?
-    var descripciom : UILabel?*/
-    
     var heroe : Heroe?
     
     init(){
         super.init(nibName: nil, bundle: nil)
-        
+  
     }
     
     required init?(coder: NSCoder) {
@@ -29,8 +25,6 @@ class HeroeDetailController : UIViewController {
     
     override func loadView() {
         
-        //putElementsOnView()
-
     }
     
     override func viewDidLoad() {
@@ -41,9 +35,9 @@ class HeroeDetailController : UIViewController {
         
         let detail = HeroDetailView()
         
-        detail.image.kf.setImage(with: URL(string: self.heroe?.photo ?? ""))
+        /*detail.image.kf.setImage(with: URL(string: self.heroe?.photo ?? ""))
         detail.titleName.text = heroe?.name
-        detail.descriptio.text = heroe?.descripcion
+        detail.descriptio.text = heroe?.descripcion*/
         
         view = HeroDetailView()
     }
