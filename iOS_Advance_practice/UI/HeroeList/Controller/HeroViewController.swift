@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import Kingfisher
 
 class HeroViewController : UIViewController {
     
@@ -26,8 +27,8 @@ class HeroViewController : UIViewController {
     var loginController : LoginViewController?
     
     //enlace con detail
-    var detail : HeroDetailView?
-    var detailControl : HeroeDetailController?
+    //var detail : HeroDetailView?
+    //var detailControl : HeroeDetailController?
     //**************************
     var responseData = AppDelegate.staticAppDelegate.dataManager.context
     var dataTable : Heroe?
@@ -78,15 +79,12 @@ class HeroViewController : UIViewController {
             
             let heroeModel = datasource.heroes[index]
             
-            // acá debe de ir el detail !!!!
-            self?.detailControl = HeroeDetailController(heroe: heroeModel)
+            debugPrint("Indice pulsado --> ", heroeModel)
+            let detail = HeroeDetailController()
+            detail.detail.putElementsOnView(heroeModel)
             
-            guard let value = self?.detailControl else { return }
-            value.modalPresentationStyle = .fullScreen
-            value.navigationController?.present(value, animated: true)
-            //self?.detailControl?.modalPresentationStyle = .fullScreen
-            //self?.navigationController?.present(self.detailControl?, animated: true)
-  
+            self?.navigationController?.pushViewController(detail, animated: true)
+            
         }
     }
     

@@ -39,11 +39,11 @@ class TabController : UITabBarController {
         navControllerA.tabBarItem = UITabBarItem(title: "TableView", image: tabImageA, tag: 0)
         
         // DEFINICIÓN DEL NAVIGATION CONTROLLER QUE INVOQUE A LA COLLECTIONVIEW
-        let navControllerB = UINavigationController(rootViewController: HeroViewController())
-        /*let tabImageB = UIImage(systemName: "mappin.and.ellipse")!
+        //let navControllerB = UINavigationController(rootViewController: HeroeDetailController())
+        //let tabImageB = UIImage(systemName: "mappin.and.ellipse")!
         
         // DEFINICIÓN DEL NAV Y EL ITEM EN LA VIEW  -->
-        navControllerB.tabBarItem = UITabBarItem(title: "MappinView", image: tabImageB, tag: 1)*/
+        //navControllerB.tabBarItem = UITabBarItem(title: "MappinView", image: tabImageB, tag: 1)
         
        /* let navControllerC = UINavigationController(rootViewController: FavoriteController())
         let tabImageC = UIImage(systemName: "heart.text.square")!

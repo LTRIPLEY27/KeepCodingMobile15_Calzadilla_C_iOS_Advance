@@ -45,20 +45,20 @@ class LoginViewController: UIViewController {
         button?.addTarget(self, action: #selector(letIn), for: .touchUpInside)
         
         // uso del debug if
-        /*#if DEBUG
+        #if DEBUG
         
         email?.text = "isabel.calzadilla.18@gmail.com"
         password?.text = "root"
         
-        #endif*/
+        #endif
         
         
-        #if DEBUG
+        /*#if DEBUG
         
         email?.text = "pmg@test.com"
         password?.text = "!Test1234"
         
-        #endif
+        #endif*/
     }
 
     @objc

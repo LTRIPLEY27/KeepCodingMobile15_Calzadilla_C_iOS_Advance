@@ -18,9 +18,9 @@ class HeroeDetailController : UIViewController {
     
     var heroe : Heroe?
     
-    init(heroe : Heroe){
+    init(){
         super.init(nibName: nil, bundle: nil)
-        self.heroe = heroe
+        
     }
     
     required init?(coder: NSCoder) {
@@ -29,12 +29,12 @@ class HeroeDetailController : UIViewController {
     
     override func loadView() {
         
-        putElementsOnView()
+        //putElementsOnView()
 
     }
     
     override func viewDidLoad() {
-        
+        putElementsOnView()
     }
 
     func putElementsOnView() {

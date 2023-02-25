@@ -31,10 +31,12 @@ class HeroDetailView : UIView {
     
     let titleName : UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .cyan
+        label.backgroundColor = .white
+        label.alpha = 0.80
         label.numberOfLines = 0
-        label.textAlignment = .justified
-        label.font = .systemFont(ofSize: 24)
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 32)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -43,6 +45,8 @@ class HeroDetailView : UIView {
     let descriptio : UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.backgroundColor = .white
+        label.alpha = 0.80
         label.numberOfLines = 0
         label.textAlignment = .justified
         label.font = .systemFont(ofSize: 14)
@@ -58,10 +62,11 @@ class HeroDetailView : UIView {
         return scroll
     }()
     
-    let background : UIImageView = {
+    let background = {
         let image = UIImageView()
-        image.image = UIImage(named: "dragonBalls.jpg")
-        image.alpha = 0.65
+        image.image = UIImage(named: "dragon.jpg")
+        image.alpha = 0.95
+        image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
@@ -71,20 +76,23 @@ class HeroDetailView : UIView {
         addSubview(background)
         addSubview(image)
         addSubview(titleName)
+        //addSubview(scroll)
+        //scroll.addSubview(descriptio)
         addSubview(descriptio)
         
         NSLayoutConstraint.activate([
-            // CONSTRAINTS BACKGROUND
+            // CONSTRAINTS DEL BACKGROUND
             background.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
+
             
             // CONSTRAINTS IMAGE
-            image.topAnchor.constraint(equalTo: background.topAnchor, constant: 40),
-            image.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 20),
-            image.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -20),
-            image.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -450),
+            image.topAnchor.constraint(equalTo: background.topAnchor, constant: 100),
+            image.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 30),
+            image.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -30),
+            image.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -300),
             
             // CONSTRAINTS TITLE NAME
             titleName.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 30),
@@ -96,8 +104,13 @@ class HeroDetailView : UIView {
             // CONSTRAINTS TITLE NAME
             descriptio.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 30),
             descriptio.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 20),
-            descriptio.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -20),
-            descriptio.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: 30),
+            descriptio.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -30),
+            descriptio.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -20),
+            
+            /*scroll.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 30),
+             scroll.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 20),
+             scroll.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -30),
+             scroll.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -20),*/
         ])
     }
     
