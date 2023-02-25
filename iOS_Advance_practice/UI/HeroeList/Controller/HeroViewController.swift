@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import CoreData
-import Kingfisher
 
 class HeroViewController : UIViewController {
     
@@ -25,6 +24,9 @@ class HeroViewController : UIViewController {
     //enlace con login
     var login : LoginViewModel?
     var loginController : LoginViewController?
+    
+    // button para salir de la app
+    var button : UIButton?
 
     //**************************
     var responseData = AppDelegate.staticAppDelegate.dataManager.context
@@ -39,7 +41,6 @@ class HeroViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         putElementsOnTable()
         pushTheCell()
 
@@ -54,8 +55,9 @@ class HeroViewController : UIViewController {
             
             return
         }
-        
+
         getValues()
+
     }
     
     // USO DEL DELEGADO DE LA TABLA PARA POSICIONAR ELEMENTOS
@@ -134,6 +136,12 @@ class HeroViewController : UIViewController {
         fatalError("Error from the table --> exploiting  \(error)")
     }
 }
+    
+    @objc
+    func push(_ sender : Any){
+        debugPrint("Bye bye")
+        self.dismiss()
+    }
 }
 
 

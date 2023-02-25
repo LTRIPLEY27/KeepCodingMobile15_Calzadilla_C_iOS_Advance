@@ -74,7 +74,7 @@ class LoginView : UIView {
         button.backgroundColor = .red
         button.setTitle("Log In", for: .normal)
         button.tintColor = .white
-        //button.alpha = 0.80
+        button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button

@@ -101,4 +101,10 @@ class HeroListView : UIView {
             table.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -95),
         ])
     }
+    
+    
+   func getButton() -> UIButton {
+        return button
+    }
+    
 }

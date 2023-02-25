@@ -38,12 +38,12 @@ class TabController : UITabBarController {
         // DEFINICIÓN DEL NAV Y EL ITEM EN LA VIEW  -->
         navControllerA.tabBarItem = UITabBarItem(title: "TableView", image: tabImageA, tag: 0)
         
-        // DEFINICIÓN DEL NAVIGATION CONTROLLER QUE INVOQUE A LA COLLECTIONVIEW
-        //let navControllerB = UINavigationController(rootViewController: HeroeDetailController())
-        //let tabImageB = UIImage(systemName: "mappin.and.ellipse")!
+        // DEFINICIÓN DEL NAVIGATION CONTROLLER QUE INVOQUE A LA MAPVIEW
+        let navControllerB = UINavigationController(rootViewController: HeroeMapViewController())
+        let tabImageB = UIImage(systemName: "mappin.and.ellipse")!
         
         // DEFINICIÓN DEL NAV Y EL ITEM EN LA VIEW  -->
-        //navControllerB.tabBarItem = UITabBarItem(title: "MappinView", image: tabImageB, tag: 1)
+        navControllerB.tabBarItem = UITabBarItem(title: "MappinView", image: tabImageB, tag: 1)
         
        /* let navControllerC = UINavigationController(rootViewController: FavoriteController())
         let tabImageC = UIImage(systemName: "heart.text.square")!
@@ -57,7 +57,7 @@ class TabController : UITabBarController {
         navControllerD.tabBarItem = UITabBarItem(title: "Add", image: tabImageD, tag: 4)*/
         
         // ARRAY DE ITEMS A CONTENER EN EL TAB, LE INDICAMREMOS, CUANTOS DESEEMOS
-        viewControllers = [navControllerA/*, navControllerB*/]
+        viewControllers = [navControllerA, navControllerB]
     }
     
     private func setLayout(){

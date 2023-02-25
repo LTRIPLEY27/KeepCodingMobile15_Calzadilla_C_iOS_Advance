@@ -35,10 +35,6 @@ class HeroeDetailController : UIViewController {
         
         let detail = HeroDetailView()
         
-        /*detail.image.kf.setImage(with: URL(string: self.heroe?.photo ?? ""))
-        detail.titleName.text = heroe?.name
-        detail.descriptio.text = heroe?.descripcion*/
-        
         view = HeroDetailView()
     }
 }
