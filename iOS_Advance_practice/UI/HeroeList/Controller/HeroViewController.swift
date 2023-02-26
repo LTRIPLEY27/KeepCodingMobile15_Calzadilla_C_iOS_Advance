@@ -38,7 +38,6 @@ class HeroViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let action = UITapGestureRecognizer(target: self, action: #selector(push(_:)))
         mainView.button.addTarget(self, action: #selector(push), for: .touchUpInside)
         putElementsOnTable()
         pushTheCell()
@@ -110,7 +109,7 @@ class HeroViewController : UIViewController {
                         
                         self.heroes = heros
                         // LLAMADA A LA FUNCIÓN PARA INSERTAR LOS DATOS DE LA API A LA TABLA
-                        var heroesFromTable =  self.heroeViewModel?.insertToTable(heroes : self.heroes)
+                        let heroesFromTable =  self.heroeViewModel?.insertToTable(heroes : self.heroes)
                         
                         self.tableDatasourse?.set(heroes: heroesFromTable!)
                         
@@ -123,7 +122,7 @@ class HeroViewController : UIViewController {
                 }
             }
             else {
-                var heroesFromTable =  self.heroeViewModel?.chargeFromData(data: result)
+                let heroesFromTable =  self.heroeViewModel?.chargeFromData(data: result)
                 
                 self.tableDatasourse?.set(heroes: heroesFromTable!)
                 debugPrint("from data --> " ,heroes)

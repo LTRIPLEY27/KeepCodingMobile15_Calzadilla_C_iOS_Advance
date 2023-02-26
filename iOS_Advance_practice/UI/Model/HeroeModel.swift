@@ -13,6 +13,6 @@ struct HeroeModel : Codable {
     var photo : String?
     var description : String
     var favorite : Bool
-    var latitude : Double?
-    var longitude : Double?
+    var latitud : Double?
+    var longitud : Double?
 }

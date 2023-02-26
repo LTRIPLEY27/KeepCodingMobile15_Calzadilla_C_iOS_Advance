@@ -102,12 +102,48 @@ final class ApiClient {
     
     task.resume()
   }
-    
+    /*
+    func getLocalization(with id: String, completion: @escaping ([LocationModel], Error?) -> Void) {
+        guard let url = URL(string: "https://dragonball.keepcoding.education/api/heros/locations") else {
+            completion([], NetworkError.malformedURL)
+            return
+        }
+        
+        var urlComponents = URLComponents()
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+
+            guard error == nil else {
+                completion([], NetworkError.unknown)
+                return
+            }
+            
+            guard let data = data else {
+                completion([], NetworkError.noData)
+                return
+            }
+            
+            guard let response = try? JSONDecoder().decode([LocationModel].self, from: data) else {
+                completion([], NetworkError.decodingFailed)
+                return
+            }
+            
+            completion(response, nil)
+        }
+        
+        task.resume()
+    }*/
    
-    func getHeroesLocation(id : String, completion: @escaping (LocationModel?, Error?) -> Void) {
+   func getHeroesLocation(id: String, completion: @escaping ([LocationModel], Error?) -> Void) {
 
         guard let url = URL(string: "\(Constants.api_base_url)/heros/locations"), let token = self.token else {
-        completion(nil, NetworkError.malformedURL)
+        completion([], NetworkError.malformedURL)
         return
       }
       
@@ -121,20 +157,20 @@ final class ApiClient {
       
       let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
         guard error == nil else {
-          completion(nil, NetworkError.unknown)
+          completion([], NetworkError.unknown)
           return
         }
         
         guard let data = data else {
-          completion(nil, NetworkError.noData)
+          completion([], NetworkError.noData)
           return
         }
         
         guard let response = try? JSONDecoder().decode([LocationModel].self, from: data) else {
-          completion(nil, NetworkError.decodingFailed)
+          completion([], NetworkError.decodingFailed)
           return
         }
-          completion(response.first, nil)
+          completion(response, nil)
       }
       
       task.resume()

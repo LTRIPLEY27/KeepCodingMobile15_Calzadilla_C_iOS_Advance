@@ -40,67 +40,42 @@ class HeroViewModel : NSObject {
         debugPrint("here is the token ->",tokenLog)
         // completion del trailing clousures de apiclient con los datos de heroes
         apiClient.getHeroes() { [weak self] heroes, error in
-            // retorna el clousure de vuelta con los valores
-            //let heroesUp = self?.checkLocations(heroes: heros)
-            var heros : [HeroeModel] = []
-            let group = DispatchGroup()
-            //heroes.forEach{ heroe in
-            for heroe in heroes {
-                group.enter()
-                apiClient.getHeroesLocation(id: heroe.id) { location, error in
-                    var hero = heroe
-                    if let firtsLocation = location {
-                        hero.latitude = Double(firtsLocation.latitude)
-                        hero.longitude = Double(firtsLocation.longitude)
-                    }
-                    else {
-                        hero.latitude = 0.0
-                        hero.longitude = 0.0
-                    }
-                    heros.append(hero)
-                    debugPrint(heros.count)
-                    group.leave()
-                }
-            }
-            group.notify(queue: .main) {
-                debugPrint(heros)
-                self?.update?(heros)
-            }
             
-            //self?.update?(self?.checkLocations(heroes: heroes))
-            debugPrint("here is the heroes with locations ->",heroes)
+            self?.checkLocations(heroes: heroes)
         }
     }
     
-    //func checkLocations(heroes : [HeroeModel]) -> [HeroeModel]{
     func checkLocations(heroes : [HeroeModel]) -> Void {
         var heros : [HeroeModel] = []
-        debugPrint(heroes.count)
-        // ES IMPERATIVO QUE LA SUBCONSULTA A LA API SE HAGA EN UN HILO PROPIO, CASO CONTRARIO, RETORNA NULL
+        // PARA EMULACION DE HILOS Y LLAMADAS SIMULTÁNES, LLAMAMOS A UN DISPATCHGROUP YA QUE SE SALDRÁ DEL HILO PRINCIPAL Y RETORNARÁ VALORES AL MISMO
         let group = DispatchGroup()
-        //heroes.forEach{ heroe in
-        for heroe in heroes {
+        
+        guard let apiClient = self.apiClient else { return }
+        
+        heroes.forEach{ heroe in
+            // DEFINICIÓN DE INICIO DEL 'DISPATCH' PARA HACER OPERACIONES SIMULTÁNEAS AL HILO PRINCIPAL
             group.enter()
-            apiClient?.getHeroesLocation(id: heroe.id) { location, error in
-                var hero = heroe
-                if let firtsLocation = location {
-                    hero.latitude = Double(firtsLocation.latitude)
-                    hero.longitude = Double(firtsLocation.longitude)
+            
+            apiClient.getHeroesLocation(id: heroe.id) { location, error in
+                var fullHero = heroe
+                if let firstLocation = location.first {
+                    fullHero.latitud = Double(firstLocation.latitud)
+                    fullHero.longitud = Double(firstLocation.longitud)
+                } else {
+                    fullHero.latitud = 0.0
+                    fullHero.longitud = 0.0
                 }
-                else {
-                    hero.latitude = 0.0
-                    hero.longitude = 0.0
-                }
-                heros.append(hero)
-                debugPrint(heros.count)
+                heros.append(fullHero)
+                debugPrint("here is the heroes with locations ->",heroes)
+                // DEFINICIÓN DEL CIERRA DE LA OPERACIÓN SIMULTÁNEA
                 group.leave()
             }
         }
+        // DEFINICIÓN DEL HILO AL QUÉ TORNAR CON EL VALOR DE LA OPERACIÓN
         group.notify(queue: .main) {
             debugPrint(heros)
+            self.update?(heros)
         }
-        
-       // return heros
     }
 
     // FUNCIONES REFERENTES A LA ALIMENTACIÓN DE DATOS
@@ -115,8 +90,8 @@ class HeroViewModel : NSObject {
             dataTable.descripcion = hero.description
             dataTable.photo = hero.photo
             dataTable.favorite = hero.favorite
-            dataTable.latitude = hero.latitude!
-            dataTable.longitude = hero.longitude!
+            dataTable.latitude = hero.latitud!
+            dataTable.longitude = hero.longitud!
             heroesTable.append(dataTable)
         }
         debugPrint("Heroes are in the table!!!")
