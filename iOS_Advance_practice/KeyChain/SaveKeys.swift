@@ -9,9 +9,11 @@ import Foundation
 import Security
 import UIKit
 
-class SaveKeys {
+final class SaveKeys {
     
-    init() {
+    static let keys = SaveKeys()
+    
+    init(){
         
     }
     
@@ -19,8 +21,6 @@ class SaveKeys {
     func tokenCheck(email : String) -> String {
         
         var myToken = ""
-        let email = email
-        //let password = password
         //QUERY PARA EVALUAR SI EL TOKEN TIENE O NO VALOR
         let query : [String : Any] = [
             kSecClass as String : kSecClassGenericPassword,
@@ -30,7 +30,7 @@ class SaveKeys {
             kSecReturnData as String : true
         ]
         
-        debugPrint("El valor por primera vez del token es \(tokenLog)")
+        debugPrint("El valor por primera vez del token es ")
         
         // inciializamos un valor para enviar por parámetro
         var item : CFTypeRef?
@@ -85,6 +85,6 @@ class SaveKeys {
             debugPrint("No se ha podido borrar sus credenciales")
         }
     }
-    
+
     
 }

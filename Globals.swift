@@ -9,7 +9,9 @@ import Foundation
 
 var tokenLog : String = ""
 var apiClient : ApiClient?
+//var email : String = ""
 
 func isAUserOk() -> Bool {
     return !tokenLog.isEmpty
 }
+

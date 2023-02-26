@@ -11,7 +11,7 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    // DECLARACIÓN DE UNA VARIABLE ESTÁTICA 'APPDELEGATE' PARA INICIALIZAR EL MODELO APENAS ARRANCA LA APP
+    // DECLARACIÓN DE UNA VARIABLE ESTÁTICA 'APPDELEGATE' PARA INICIALIZAR EL MODELO APENAS ARRANCA LA APP Y MANTENER DATOS DE LA SESIÓN
     lazy var dataManager : DataManager = .init(model: "Heroe")
     
     static let staticAppDelegate : AppDelegate = {

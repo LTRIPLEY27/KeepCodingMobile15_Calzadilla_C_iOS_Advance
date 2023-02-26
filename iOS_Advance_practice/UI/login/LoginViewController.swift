@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
                 check.tokenSave(token: token, email: email)
                 // DECLARACION DEL TOKEN COMO GLOBAL PARA RECIBIR LAS LLAMADAS API
                 tokenLog = token
-                debugPrint("tokenlog" , tokenLog)
+                //email = email
 
                 self?.delegate?.dismiss()
                 

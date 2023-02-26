@@ -98,7 +98,4 @@ class HeroMapView : UIView {
         ])
     }
     
-    func getButton() -> UIButton {
-        return button
-    }
 }

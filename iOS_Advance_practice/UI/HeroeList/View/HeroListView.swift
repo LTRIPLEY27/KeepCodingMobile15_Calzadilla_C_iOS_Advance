@@ -83,7 +83,7 @@ class HeroListView : UIView {
             background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             
-            button.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            button.topAnchor.constraint(equalTo: background.topAnchor, constant: 120),
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 250),
             button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             button.heightAnchor.constraint(equalToConstant: 30),
@@ -102,10 +102,5 @@ class HeroListView : UIView {
             table.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -95),
         ])
     }
-    
-    
-   /*func getButton() -> UIButton {
-        return button
-    }*/
     
 }

@@ -10,20 +10,18 @@ import CoreData
 
 class HeroViewModel : NSObject {
     
-    private static let allCharacters = "characters"
-    
-    var apiClient : ApiClient?
+    private var apiClient : ApiClient?
     // TRAILING CLOUSURE PARA OBTENER DATOS
     var update: ((_ heroes: [HeroeModel]) -> Void)?
     
-    var heroesTable : [Heroe] = []
+    private var heroesTable : [Heroe] = []
     
-    var heroesOnLocal : [HeroeModel] = []
-    var heroeOnLocal : HeroeModel?
+    private var heroesOnLocal : [HeroeModel] = []
+    private var heroeOnLocal : HeroeModel?
     
     //****** to check
-    var dataTable : Heroe?
-    var responseData = AppDelegate.staticAppDelegate.dataManager.context
+    private var dataTable : Heroe?
+    private var responseData = AppDelegate.staticAppDelegate.dataManager.context
     
     // CONSTRUCTOR
     init(apiClient: ApiClient) {
@@ -40,7 +38,7 @@ class HeroViewModel : NSObject {
         debugPrint("here is the token ->",tokenLog)
         // completion del trailing clousures de apiclient con los datos de heroes
         apiClient.getHeroes() { [weak self] heroes, error in
-            
+            // llamado a la funcuón que iterará sobre la respuesta realizando operaciones simultáneas al hilo principal
             self?.checkLocations(heroes: heroes)
         }
     }

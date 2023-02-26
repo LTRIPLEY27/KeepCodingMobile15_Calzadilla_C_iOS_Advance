@@ -12,25 +12,24 @@ import CoreData
 class HeroViewController : UIViewController {
     
     // DECLARACIÓN VARIABLES ENLACE
-    var mainView : HeroListView { self.view as! HeroListView } // casting de heroelist
-    var heroes : [HeroeModel] = [] // clase heroe
-    var heroesTable : [Heroe] = [] // clase heroe
+    private var mainView : HeroListView { self.view as! HeroListView } // casting de heroelist
+    private var heroes : [HeroeModel] = [] // clase heroe
+    private var heroesTable : [Heroe] = [] // clase heroe
     
     //enlaces a viewmodel
-    var heroeViewModel : HeroViewModel? // refiere al viewmodel
+    private var heroeViewModel : HeroViewModel? // refiere al viewmodel
     private var tableDatasourse : HeroeDataSource?
     private var tableDelegate : HeroeListDelegate?
     
     //enlace con login
-    var login : LoginViewModel?
-    var loginController : LoginViewController?
-
+    private var login : LoginViewModel?
+    private var loginController : LoginViewController?
     //**************************
-    var responseData = AppDelegate.staticAppDelegate.dataManager.context
-    var dataTable : Heroe?
+    private var responseData = AppDelegate.staticAppDelegate.dataManager.context
+    private var dataTable : Heroe?
     
     // VARIABLE INYECTOR DE LA DEPENDENCIA FETCH PARA LA TABLA
-    var heroFetch : NSFetchRequest<Heroe>?
+    private var heroFetch : NSFetchRequest<Heroe>?
     
     override func loadView() {
         view = HeroListView()
@@ -38,13 +37,10 @@ class HeroViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.button.addTarget(self, action: #selector(push), for: .touchUpInside)
+        mainView.button.addTarget(self, action: #selector(push), for: .allTouchEvents)
         putElementsOnTable()
         pushTheCell()
         
-
-        //mainView.button.addTarget(self, action: #selector(push), for: .touchUpInside)
-
         if !isAUserOk() {
             //INSTANCIACIÓN DEL LOGINVIEW CON ÉSTE HEROCONTROLLER PARA CARGA DE DATOS
             loginController = LoginViewController(delegate: self)
@@ -60,7 +56,7 @@ class HeroViewController : UIViewController {
     }
     
     // USO DEL DELEGADO DE LA TABLA PARA POSICIONAR ELEMENTOS
-    func putElementsOnTable() {
+    private func putElementsOnTable() {
         tableDelegate = HeroeListDelegate()
         tableDatasourse = HeroeDataSource(tableView: mainView.table)
         mainView.table.dataSource = tableDatasourse
@@ -69,7 +65,7 @@ class HeroViewController : UIViewController {
     }
     
     // DEFINICIÓN DEL VALOR DE LA CELDA PULSADA
-    func pushTheCell() {
+    private func pushTheCell() {
         
         tableDelegate?.dipTapOnCell = { [weak self] index in
             // captura del datasource
@@ -84,10 +80,10 @@ class HeroViewController : UIViewController {
         }
     }
     
-    func getValues() {
+    private func getValues() {
         
         let api = ApiClient(token: tokenLog)
-        
+
         heroeViewModel = HeroViewModel(apiClient: api)
         
         guard let heroeViewModel else { return }
@@ -118,7 +114,7 @@ class HeroViewController : UIViewController {
                         self.heroFetch = Heroe.fetchRequest()
                     }
 
-                    debugPrint("DESDE EL API FETCH ESTÁ MAL!!!")
+                    debugPrint("DESDE EL API FETCH ESTÁ OK!!!")
                 }
             }
             else {
@@ -137,9 +133,17 @@ class HeroViewController : UIViewController {
 }
     
     @objc
-    func push(){
-        debugPrint("Bye bye")
-        //self.dismiss()
+    private func push(){
+        debugPrint("Bye bye Saiyan warrior")
+        SaveKeys.keys.deleteToken(email : "isabel.calzadilla.18@gmail.com")
+        debugPrint("Adeu Saiyan User  your credentials  was deleted !!!")
+        
+        loginController = LoginViewController(delegate: self)
+        
+        guard let loginController else { return }
+        
+        loginController.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(loginController, animated: true)
     }
 }
 
