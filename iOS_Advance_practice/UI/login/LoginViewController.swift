@@ -11,7 +11,6 @@ class LoginViewController: UIViewController {
     
     var mainView: LoginView {self.view as! LoginView}
     var viewModel : LoginViewModel?
-    //var title : UILabel?
     var email : UITextField?
     var password : UITextField?
     var button : UIButton?
@@ -70,14 +69,23 @@ class LoginViewController: UIViewController {
         
         viewModel?.checkUser = { [weak self] token, error in
             
-            if !token.isEmpty {
-                
+            let check = SaveKeys()
+            debugPrint(check.tokenCheck(email: email))
+            
+            if check.tokenCheck(email: email) == "" {
+            //if !token.isEmpty {
+                check.tokenSave(token: token, email: email)
                 // DECLARACION DEL TOKEN COMO GLOBAL PARA RECIBIR LAS LLAMADAS API
                 tokenLog = token
                 debugPrint("tokenlog" , tokenLog)
 
                 self?.delegate?.dismiss()
                 
+                return
+            }
+            else {
+                tokenLog = token
+                self?.delegate?.dismiss()
                 return
             }
             

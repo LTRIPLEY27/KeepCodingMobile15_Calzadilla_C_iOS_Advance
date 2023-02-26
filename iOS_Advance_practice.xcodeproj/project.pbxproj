@@ -19,6 +19,7 @@
 		2589299829A9498900226A36 /* HeroeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2589299729A9498900226A36 /* HeroeDetailController.swift */; };
 		25A9D55929AA938B00E75F02 /* HeroMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9D55829AA938B00E75F02 /* HeroMapView.swift */; };
 		25A9D55B29AA97A500E75F02 /* HeroeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9D55A29AA97A500E75F02 /* HeroeMapViewController.swift */; };
+		25A9D55E29AAB10600E75F02 /* SaveKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9D55D29AAB10600E75F02 /* SaveKeys.swift */; };
 		25C5AC7129A0EA470017A3F9 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7029A0EA470017A3F9 /* ApiClient.swift */; };
 		25C5AC7429A0EABF0017A3F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7329A0EABF0017A3F9 /* Constants.swift */; };
 		25C5AC7B29A0F9190017A3F9 /* HeroListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C5AC7A29A0F9190017A3F9 /* HeroListView.swift */; };
@@ -36,6 +37,7 @@
 		25E582A329A662D300E025DF /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E582A229A662D300E025DF /* DataManager.swift */; };
 		25E582A529A6796600E025DF /* Heroe+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E582A429A6796600E025DF /* Heroe+CoreData.swift */; };
 		25E7583229A3FF22004FD845 /* TabBarClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7583129A3FF22004FD845 /* TabBarClass.swift */; };
+		25F3174F29AB66DC002CA294 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F3174E29AB66DC002CA294 /* LocationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 		2589299729A9498900226A36 /* HeroeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeDetailController.swift; sourceTree = "<group>"; };
 		25A9D55829AA938B00E75F02 /* HeroMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroMapView.swift; sourceTree = "<group>"; };
 		25A9D55A29AA97A500E75F02 /* HeroeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeMapViewController.swift; sourceTree = "<group>"; };
+		25A9D55D29AAB10600E75F02 /* SaveKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveKeys.swift; sourceTree = "<group>"; };
 		25C5AC7029A0EA470017A3F9 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		25C5AC7329A0EABF0017A3F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		25C5AC7A29A0F9190017A3F9 /* HeroListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListView.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		25E582A229A662D300E025DF /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		25E582A429A6796600E025DF /* Heroe+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Heroe+CoreData.swift"; sourceTree = "<group>"; };
 		25E7583129A3FF22004FD845 /* TabBarClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarClass.swift; sourceTree = "<group>"; };
+		25F3174E29AB66DC002CA294 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 		2546E1BE299FA45F006BCA17 /* iOS_Advance_practice */ = {
 			isa = PBXGroup;
 			children = (
+				25A9D55C29AAB0E100E75F02 /* KeyChain */,
 				25E5829D29A65FF500E025DF /* CoreData */,
 				25E5829B29A65F6000E025DF /* App */,
 				25E5829A29A65F4000E025DF /* UI */,
@@ -171,6 +176,14 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
+		25A9D55C29AAB0E100E75F02 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				25A9D55D29AAB10600E75F02 /* SaveKeys.swift */,
+			);
+			path = KeyChain;
+			sourceTree = "<group>";
+		};
 		25C5AC6F29A0EA1A0017A3F9 /* ApiClientModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				25C5AC7929A0F8EF0017A3F9 /* View */,
-				25C5AC7829A0F8D30017A3F9 /* Model */,
 				25C5AC7729A0F8CB0017A3F9 /* Controller */,
 				25C5AC7629A0F5B60017A3F9 /* MvvM */,
 			);
@@ -220,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				25C5AC7E29A1060C0017A3F9 /* HeroeModel.swift */,
+				25F3174E29AB66DC002CA294 /* LocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 		25E5829A29A65F4000E025DF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				25C5AC7829A0F8D30017A3F9 /* Model */,
 				25A9D55729AA935D00E75F02 /* MapView */,
 				25E5829C29A65F8700E025DF /* TabBar */,
 				2546E1F2299FA475006BCA17 /* login */,
@@ -439,6 +453,7 @@
 				2546E1C4299FA45F006BCA17 /* ViewController.swift in Sources */,
 				25C5AC7129A0EA470017A3F9 /* ApiClient.swift in Sources */,
 				25C5AC7B29A0F9190017A3F9 /* HeroListView.swift in Sources */,
+				25F3174F29AB66DC002CA294 /* LocationModel.swift in Sources */,
 				2546E1C0299FA45F006BCA17 /* AppDelegate.swift in Sources */,
 				25E7583229A3FF22004FD845 /* TabBarClass.swift in Sources */,
 				25C5AC9529A160E10017A3F9 /* Globals.swift in Sources */,
@@ -451,6 +466,7 @@
 				25C5AC8829A13FAC0017A3F9 /* HeroViewModel.swift in Sources */,
 				25C5AC7D29A0FA580017A3F9 /* HeroCell.swift in Sources */,
 				25C5AC8A29A13FC20017A3F9 /* HeroViewController.swift in Sources */,
+				25A9D55E29AAB10600E75F02 /* SaveKeys.swift in Sources */,
 				25C5AC8E29A144290017A3F9 /* HeroeListDelegate.swift in Sources */,
 				2546E1FA299FE1DA006BCA17 /* LoginViewModel.swift in Sources */,
 				25C5AC7429A0EABF0017A3F9 /* Constants.swift in Sources */,

@@ -17,11 +17,13 @@ final class Heroe : NSManagedObject {
 extension Heroe  {
 
     // '@NSManaged' --> Indica que es una propiedad gestionada
-    @NSManaged var id : String?
-    @NSManaged var name : String?
-    @NSManaged var descripcion : String?
+    @NSManaged var id : String
+    @NSManaged var name : String
+    @NSManaged var descripcion : String
     @NSManaged var photo : String?
-    @NSManaged var favorite: String?
+    @NSManaged var favorite: Bool
+    @NSManaged var latitude : Double
+    @NSManaged var longitude : Double
     
     @nonobjc class func fetchRequest() -> NSFetchRequest<Heroe> {
         NSFetchRequest<Heroe>(entityName: "Heroe")

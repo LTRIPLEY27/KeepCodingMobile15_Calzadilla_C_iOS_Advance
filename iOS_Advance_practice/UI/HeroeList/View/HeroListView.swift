@@ -61,6 +61,7 @@ class HeroListView : UIView {
         button.backgroundColor = .red
         button.setTitle("Log Out", for: .normal)
         button.tintColor = .white
+        button.isUserInteractionEnabled = true
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -71,9 +72,9 @@ class HeroListView : UIView {
     func startView() {
         
         addSubview(background)
+        addSubview(button)
         addSubview(title)
         addSubview(table)
-        addSubview(button)
         
         NSLayoutConstraint.activate([
             // CONSTRAINTS DEL BACKGROUND
@@ -82,11 +83,11 @@ class HeroListView : UIView {
             background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             
-            button.topAnchor.constraint(equalTo: topAnchor, constant: 50),
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 280),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            button.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 250),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             button.heightAnchor.constraint(equalToConstant: 30),
-            button.widthAnchor.constraint(equalToConstant: 40),
+            button.widthAnchor.constraint(equalToConstant: 80),
             
             // CONSTRAINTS DEL TITLE
             title.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 5),
@@ -103,8 +104,8 @@ class HeroListView : UIView {
     }
     
     
-   func getButton() -> UIButton {
+   /*func getButton() -> UIButton {
         return button
-    }
+    }*/
     
 }

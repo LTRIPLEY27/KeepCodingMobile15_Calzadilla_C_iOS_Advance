@@ -24,9 +24,6 @@ class HeroViewController : UIViewController {
     //enlace con login
     var login : LoginViewModel?
     var loginController : LoginViewController?
-    
-    // button para salir de la app
-    var button : UIButton?
 
     //**************************
     var responseData = AppDelegate.staticAppDelegate.dataManager.context
@@ -41,8 +38,13 @@ class HeroViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //let action = UITapGestureRecognizer(target: self, action: #selector(push(_:)))
+        mainView.button.addTarget(self, action: #selector(push), for: .touchUpInside)
         putElementsOnTable()
         pushTheCell()
+        
+
+        //mainView.button.addTarget(self, action: #selector(push), for: .touchUpInside)
 
         if !isAUserOk() {
             //INSTANCIACIÓN DEL LOGINVIEW CON ÉSTE HEROCONTROLLER PARA CARGA DE DATOS
@@ -52,10 +54,8 @@ class HeroViewController : UIViewController {
                 loginController.modalPresentationStyle = .fullScreen
                 self.navigationController?.present(loginController, animated: true)
             }
-            
             return
         }
-
         getValues()
 
     }
@@ -138,9 +138,9 @@ class HeroViewController : UIViewController {
 }
     
     @objc
-    func push(_ sender : Any){
+    func push(){
         debugPrint("Bye bye")
-        self.dismiss()
+        //self.dismiss()
     }
 }
 
